@@ -1,36 +1,17 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+import { PlatformColor, StyleSheet, Text, View } from 'react-native';
 
 function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
-    </SafeAreaProvider>
-  );
-}
-
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
   return (
     <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
+      <Text style={styles.label}>?attr/textColorPrimary, a ColorStateList</Text>
+      <View
+        testID="text-color-primary"
+        style={[styles.box, { backgroundColor: PlatformColor('?attr/textColorPrimary') }]}
+      />
+      <Text style={styles.label}>?attr/colorAccent, a colour</Text>
+      <View
+        testID="color-accent"
+        style={[styles.box, { backgroundColor: PlatformColor('?attr/colorAccent') }]}
       />
     </View>
   );
@@ -39,6 +20,16 @@ function AppContent() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 48,
+    gap: 12,
+    backgroundColor: '#808080',
+  },
+  label: {
+    color: '#000000',
+  },
+  box: {
+    width: 96,
+    height: 96,
   },
 });
 
